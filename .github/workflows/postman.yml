@@ -22,6 +22,12 @@ jobs:
           distribution: 'adopt'
           java-version: '11'  # You can adjust the Java version as needed
 
+      - name: Copy files from E drive to workspace
+        run: |
+          mkdir -p ${{ github.workspace }}/E
+          cp /E/* ${{ github.workspace }}/E
+
+
       - name: Upload JAR file
         uses: actions/upload-artifact@v2
         with:
