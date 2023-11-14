@@ -26,13 +26,13 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: demo-artifact
-          path: E:\Level_4\ITQA\Assignment\IS3440_GroupAssignment\demo-0.0.1-SNAPSHOT.jar
+          path: E:\Level_4\ITQA\Assignment\IS3440_GroupAssignment
 
       - name: Download JAR file
         uses: actions/download-artifact@v2
         with:
           name: demo-artifact
-          path: E:\Level_4\ITQA\Assignment\IS3440_GroupAssignment\demo-0.0.1-SNAPSHOT.jar
+          path: E:\Level_4\ITQA\Assignment\IS3440_GroupAssignment
 
       - name: Run API tests
         run: |
