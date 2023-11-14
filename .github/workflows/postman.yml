@@ -8,6 +8,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      # Install Postman CLI
+      - name: Install Postman CLI
+        run: |
+          powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
+
+      # Login to Postman CLI
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+
       # Upload JAR file to GitHub Actions artifact
       - name: Upload JAR file
         uses: actions/upload-artifact@v2
@@ -26,18 +35,7 @@ jobs:
         run: |
           java -jar demo-0.0.1-SNAPSHOT/demo-0.0.1-SNAPSHOT.jar
 
-      # Install Postman CLI
-      - name: Install Postman CLI
-        run: |
-          powershell.exe -NoProfile -InputFormat None -ExecutionPolicy AllSigned -Command "[System.Net.ServicePointManager]::SecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1'))"
-
-      # Login to Postman CLI
-      - name: Login to Postman CLI
-        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
-
       # Run API tests using Postman CLI
       - name: Run API tests with Postman CLI
         run: |
           postman collection run "21534077-e55ed6dd-a433-4d27-a88d-1b739abcdb1b" -e "21534077-7b74c5b6-fe4f-4ddf-b224-07a161c0ef22"
-
-
