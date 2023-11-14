@@ -17,12 +17,19 @@ jobs:
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
 
+      - name: List contents of E:drive
+        run: |
+          dir E:\
+
+
+
+
       # Upload JAR file to GitHub Actions artifact
       - name: Upload JAR file
         uses: actions/upload-artifact@v2
         with:
           name: demo-0.0.1-SNAPSHOT
-          path: E:\Level 4\ITQA\Assignment\IS3440_GroupAssignment\demo-0.0.1-SNAPSHOT.jar
+          path: path: 
 
       # Download JAR file in the workflow runner
       - name: Download JAR file
