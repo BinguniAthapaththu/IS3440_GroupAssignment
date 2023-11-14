@@ -17,7 +17,7 @@ jobs:
 
       - name: Build and Run JAR
         run: |
-          cd E:\Level 4\ITQA\Assignment\IS3440_GroupAssignment
+          cd E:\\Level 4\\ITQA\\Assignment\\IS3440_GroupAssignment
           java -jar demo-0.0.1-SNAPSHOT.jar
 
       - name: Run API tests
