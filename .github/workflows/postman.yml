@@ -16,21 +16,27 @@ jobs:
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
 
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'  # You can adjust the Java version as needed
+
       - name: Upload JAR file
         uses: actions/upload-artifact@v2
         with:
           name: demo-artifact
-          path: E:\Level 4\ITQA\Assignment\IS3440_GroupAssignment\demo-0.0.1-SNAPSHOT.jar
+          path: E:\Level_4\ITQA\Assignment\IS3440_GroupAssignment\demo-0.0.1-SNAPSHOT.jar
 
       - name: Download JAR file
         uses: actions/download-artifact@v2
         with:
           name: demo-artifact
-          path: E:\Level 4\ITQA\Assignment\IS3440_GroupAssignment
+          path: E:\Level_4\ITQA\Assignment\IS3440_GroupAssignment\demo-0.0.1-SNAPSHOT.jar
 
       - name: Run API tests
         run: |
-          cd E:\Level 4\ITQA\Assignment\IS3440_GroupAssignment
+          cd E:\Level_4\ITQA\Assignment\IS3440_GroupAssignment
           java -jar demo-0.0.1-SNAPSHOT.jar
 
       - name: Run Postman API tests
