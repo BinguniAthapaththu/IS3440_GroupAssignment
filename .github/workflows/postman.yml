@@ -23,11 +23,12 @@ jobs:
         with:
           distribution: 'adopt'
           java-version: '11'
-
-      - name: Build with Maven
+      
+      - name: Build and Run with Spring Boot
         run: |
-          mvn clean install
-          mvn spring-boot:run
+          ./mvnw clean install
+          ./mvnw spring-boot:run
+
 
       - name: Run API tests
         run: |
