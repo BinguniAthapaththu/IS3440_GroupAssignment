@@ -26,9 +26,8 @@ jobs:
 
       - name: Build with Maven
         run: |
-          chmod +x mvnw
-          ./mvnw clean install
-          ./mvnw spring-boot:run
+          mvn clean install
+          mvn spring-boot:run
 
       - name: Run API tests
         run: |
