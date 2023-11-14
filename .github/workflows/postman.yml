@@ -21,9 +21,6 @@ jobs:
         run: |
           dir E:\
 
-
-
-
       # Upload JAR file to GitHub Actions artifact
       - name: Upload JAR file
         uses: actions/upload-artifact@v2
