@@ -22,6 +22,11 @@ jobs:
           distribution: 'adopt'
           java-version: '11'  # You can adjust the Java version as needed
 
+      - name: List Files in Directory
+        run: |
+           ls E:\Level 4\ITQA\Assignment\IS3440_GroupAssignment
+
+
       - name: Upload JAR file
         uses: actions/upload-artifact@v2
         with:
