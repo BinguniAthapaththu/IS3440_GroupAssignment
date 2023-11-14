@@ -18,24 +18,22 @@ jobs:
       - name: Login to Postman CLI
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
 
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '11'
-          
       - name: Generate Maven Wrapper
         run: |
           mkdir -p .mvn/wrapper
-          curl -o .mvn/wrapper/maven-wrapper.jar -L https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.7.7/maven-wrapper-0.7.7.jar
+          curl -o .mvn/wrapper/maven-wrapper.jar -L https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.7.7/maven-wrapper-0.7.7.jar || exit 1
+          curl -o .mvn/wrapper/maven-wrapper.properties -L https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.7.7/maven-wrapper-0.7.7.pom || exit 1
           echo "distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.4/apache-maven-3.8.4-bin.zip" > .mvn/wrapper/maven-wrapper.properties
-          chmod +x .mvn/wrapper/maven-wrapper.jar
-
+  
+      - name: Check Maven Wrapper JAR
+        run: |
+          file .mvn/wrapper/maven-wrapper.jar | grep -q "Zip archive data" || exit 1
+  
       - name: Build with Maven
         run: |
           chmod +x .mvn/wrapper/maven-wrapper.jar
           ./.mvn/wrapper/maven-wrapper.jar clean install
-
+  
       - name: Run Spring Boot Application
         run: |
           chmod +x .mvn/wrapper/maven-wrapper.jar
