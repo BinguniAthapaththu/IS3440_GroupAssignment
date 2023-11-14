@@ -28,7 +28,6 @@ jobs:
         run: |
           mkdir -p .mvn/wrapper
           curl -o .mvn/wrapper/maven-wrapper.jar -L https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.7.7/maven-wrapper-0.7.7.jar
-          curl -o .mvn/wrapper/maven-wrapper.properties -L https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.7.7/maven-wrapper-0.7.7.pom
           echo "distributionUrl=https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.8.4/apache-maven-3.8.4-bin.zip" > .mvn/wrapper/maven-wrapper.properties
           chmod +x .mvn/wrapper/maven-wrapper.jar
 
